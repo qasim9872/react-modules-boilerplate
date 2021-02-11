@@ -5,7 +5,8 @@ const HomeView = () => <div>Home Module</div>;
 
 const Home: Module = {
   routeProps: {
-    path: '/home',
+    path: '/',
+    exact: true,
     component: HomeView,
   },
   name: 'Home',
