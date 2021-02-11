@@ -19,9 +19,7 @@ const Navbar: React.FC<{
             key={module.name}
             name={module.name}
             path={module.routeProps.path}
-            onClick={() => {
-              setCurrentTab(module.name);
-            }}
+            onClick={() => setCurrentTab(module.name)}
           />
         ))}
       </ul>

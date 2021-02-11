@@ -12,7 +12,7 @@ const NavLink: React.FC<{
       className={`no-underline border-b-2 uppercase tracking-wide font-bold text-xs py-3 mr-8 ${
         currentTab === name
           ? 'text-secondary-300 border-secondary-300'
-          : 'text-gray-200 border-transparent'
+          : 'text-gray-200 border-transparent hover:text-secondary-200'
       }`}
     >
       <Link to={path} onClick={onClick}>
