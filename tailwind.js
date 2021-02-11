@@ -1,5 +1,4 @@
 const colors = require('tailwindcss/colors');
-const plugin = require('tailwindcss/plugin');
 
 const sans = [
   'ui-sans-serif',
@@ -19,7 +18,7 @@ const sans = [
 ];
 
 module.exports = {
-  purge: [],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -36,36 +35,14 @@ module.exports = {
 
       black: colors.black,
       white: colors.white,
-      gray: { ...colors.coolGray, nav: '#f2f3f7' },
+      gray: colors.coolGray,
       red: colors.red,
       yellow: colors.amber,
       green: colors.emerald,
-      blue: { ...colors.blue, nav: '#2c98f0' },
+      blue: colors.blue,
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
-      brown: {
-        100: '#fff7f0',
-        200: '#ffcc99',
-        300: '#ffa142',
-        400: '#eb7500',
-        500: '#944a00',
-        600: '#804000',
-        700: '#663300',
-        800: '#4d2600',
-        900: '#331a00',
-      },
-      orange: {
-        100: '#ffe8cc',
-        200: '#ffd199',
-        300: '#ffba66',
-        400: '#ffa333',
-        500: '#ff8c00',
-        600: '#cc7000',
-        700: '#995400',
-        800: '#663800',
-        900: '#331c00',
-      },
     },
     spacing: {
       px: '1px',
@@ -158,7 +135,6 @@ module.exports = {
       xl: '0.75rem',
       '2xl': '1rem',
       '3xl': '1.5rem',
-      '50Percent': '50%',
       full: '9999px',
     },
     borderWidth: {
@@ -167,7 +143,6 @@ module.exports = {
       2: '2px',
       4: '4px',
       8: '8px',
-      16: '16px',
     },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -191,6 +166,7 @@ module.exports = {
       wait: 'wait',
       text: 'text',
       move: 'move',
+      help: 'help',
       'not-allowed': 'not-allowed',
     },
     divideColor: (theme) => theme('borderColor'),
@@ -351,17 +327,6 @@ module.exports = {
       6: '6',
       7: '7',
     },
-    transformOrigin: {
-      center: 'center',
-      top: 'top',
-      'top-right': 'top right',
-      right: 'right',
-      'bottom-right': 'bottom right',
-      bottom: 'bottom',
-      'bottom-left': 'bottom left',
-      left: 'left',
-      'top-left': 'top left',
-    },
     gridTemplateColumns: {
       none: 'none',
       1: 'repeat(1, minmax(0, 1fr))',
@@ -404,10 +369,8 @@ module.exports = {
       '3/6': '50%',
       '4/6': '66.666667%',
       '5/6': '83.333333%',
-      '6px': '6px',
       full: '100%',
       screen: '100vh',
-      '10px': '10px',
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',
@@ -427,8 +390,6 @@ module.exports = {
       '-2/4': '-50%',
       '-3/4': '-75%',
       '-full': '-100%',
-      '-2px': '-2px',
-      '-22px': '-22px',
     }),
     keyframes: {
       spin: {
@@ -465,8 +426,6 @@ module.exports = {
       wide: '0.025em',
       wider: '0.05em',
       widest: '0.1em',
-      '1px': '1px',
-      '5px': '5px',
     },
     lineHeight: {
       none: '1',
@@ -514,7 +473,6 @@ module.exports = {
       '6xl': '72rem',
       '7xl': '80rem',
       full: '100%',
-      '1/2': '50%',
       min: 'min-content',
       max: 'max-content',
       prose: '65ch',
@@ -523,7 +481,6 @@ module.exports = {
     minHeight: {
       0: '0px',
       full: '100%',
-      '1/2-screen': '50vh',
       screen: '100vh',
     },
     minWidth: {
@@ -667,8 +624,18 @@ module.exports = {
     },
     textColor: (theme) => theme('colors'),
     textOpacity: (theme) => theme('opacity'),
-    transitionDuration: {
-      DEFAULT: '150ms',
+    transformOrigin: {
+      center: 'center',
+      top: 'top',
+      'top-right': 'top right',
+      right: 'right',
+      'bottom-right': 'bottom right',
+      bottom: 'bottom',
+      'bottom-left': 'bottom left',
+      left: 'left',
+      'top-left': 'top left',
+    },
+    transitionDelay: {
       75: '75ms',
       100: '100ms',
       150: '150ms',
@@ -678,7 +645,8 @@ module.exports = {
       700: '700ms',
       1000: '1000ms',
     },
-    transitionDelay: {
+    transitionDuration: {
+      DEFAULT: '150ms',
       75: '75ms',
       100: '100ms',
       150: '150ms',
@@ -756,7 +724,6 @@ module.exports = {
       screen: '100vw',
       min: 'min-content',
       max: 'max-content',
-      '10px': '10px',
     }),
     zIndex: {
       auto: 'auto',
@@ -766,17 +733,6 @@ module.exports = {
       30: '30',
       40: '40',
       50: '50',
-    },
-    extend: {
-      backgroundImage: (theme) => ({
-        ...theme,
-      }),
-      backgroundColor: {
-        grayishBlack: '#333',
-      },
-      transitionProperty: {
-        height: 'height',
-      },
     },
   },
   variantOrder: [
@@ -815,6 +771,7 @@ module.exports = {
     backgroundImage: ['responsive'],
     backgroundOpacity: [
       'responsive',
+      'dark',
       'group-hover',
       'focus-within',
       'hover',
@@ -834,6 +791,7 @@ module.exports = {
     ],
     borderOpacity: [
       'responsive',
+      'dark',
       'group-hover',
       'focus-within',
       'hover',
@@ -849,7 +807,7 @@ module.exports = {
     cursor: ['responsive'],
     display: ['responsive'],
     divideColor: ['responsive', 'dark'],
-    divideOpacity: ['responsive'],
+    divideOpacity: ['responsive', 'dark'],
     divideStyle: ['responsive'],
     divideWidth: ['responsive'],
     fill: ['responsive'],
@@ -904,14 +862,14 @@ module.exports = {
     placeItems: ['responsive'],
     placeSelf: ['responsive'],
     placeholderColor: ['responsive', 'dark', 'focus'],
-    placeholderOpacity: ['responsive', 'focus'],
+    placeholderOpacity: ['responsive', 'dark', 'focus'],
     pointerEvents: ['responsive'],
     position: ['responsive'],
     resize: ['responsive'],
     ringColor: ['responsive', 'dark', 'focus-within', 'focus'],
     ringOffsetColor: ['responsive', 'dark', 'focus-within', 'focus'],
     ringOffsetWidth: ['responsive', 'focus-within', 'focus'],
-    ringOpacity: ['responsive', 'focus-within', 'focus'],
+    ringOpacity: ['responsive', 'dark', 'focus-within', 'focus'],
     ringWidth: ['responsive', 'focus-within', 'focus'],
     rotate: ['responsive', 'hover', 'focus'],
     scale: ['responsive', 'hover', 'focus'],
@@ -938,6 +896,7 @@ module.exports = {
     ],
     textOpacity: [
       'responsive',
+      'dark',
       'group-hover',
       'focus-within',
       'hover',
@@ -945,7 +904,7 @@ module.exports = {
     ],
     textOverflow: ['responsive'],
     textTransform: ['responsive'],
-    transform: ['responsive', 'hover'],
+    transform: ['responsive'],
     transformOrigin: ['responsive'],
     transitionDelay: ['responsive'],
     transitionDuration: ['responsive'],
@@ -959,34 +918,6 @@ module.exports = {
     width: ['responsive'],
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
-    extend: {
-      transform: ['group-hover'],
-      scale: ['group-hover'],
-      fontSize: ['group-hover', 'hover'],
-      fontWeight: ['hover'],
-      borderRadius: ['after'],
-      backgroundColor: ['after'],
-      position: ['before', 'after'],
-      borderWidth: ['before', 'after'],
-      borderColor: ['before', 'after'],
-      borderStyle: ['before', 'after'],
-      width: ['before', 'after'],
-      height: ['before', 'after'],
-      inset: ['before', 'after'],
-      padding: ['first'],
-    },
   },
-  plugins: [
-    require('tailwindcss-pseudo-elements'),
-    plugin(function ({ addUtilities }) {
-      addUtilities(
-        {
-          '.empty-content': {
-            content: "''",
-          },
-        },
-        ['before', 'after'],
-      );
-    }),
-  ],
+  plugins: [],
 };
