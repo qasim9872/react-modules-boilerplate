@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import { Navbar } from './components';
+import site from './constants/site.constants';
+import useSiteConfig from './hooks/use-site-config';
 import modules from './modules';
-import StoreProviders from './store';
 
-function App() {
+const AppPresentation: React.FC<{ siteConfig: typeof site }> = ({
+  siteConfig,
+}) => {
   return (
     <div className="flex flex-col mx-auto min-w-0 h-screen">
-      <Navbar modules={modules} />
+      {siteConfig.show.navbar && <Navbar modules={modules} />}
       <div className="App-content">
         {modules.map((module) => (
           <Route {...module.routeProps} key={module.name} />
@@ -15,6 +18,11 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+const withSiteConfigHOC = (Presentation: typeof AppPresentation) => () => {
+  const siteConfig = useSiteConfig();
+  return <Presentation siteConfig={siteConfig} />;
+};
+
+export default withSiteConfigHOC(AppPresentation);

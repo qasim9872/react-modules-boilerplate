@@ -15,7 +15,7 @@ const NavLink: React.FC<{
           : 'text-gray-200 border-transparent hover:text-secondary-200'
       }`}
     >
-      <Link to={path} onClick={onClick}>
+      <Link to={path} onClick={onClick} className="text-base">
         {name}
       </Link>
     </li>
