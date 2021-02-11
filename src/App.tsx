@@ -10,18 +10,15 @@ const AppPresentation: React.FC<{ siteConfig: typeof site }> = ({
 }) => {
   return (
     <div className="flex flex-col mx-auto min-w-0 h-screen">
-      {siteConfig.show.navbar && <Navbar modules={modules} />}
+      {siteConfig.show.navbar && (
+        <Navbar title={siteConfig.title} modules={modules} />
+      )}
       <div className="h-full">
         {modules.map((module) => (
           <Route {...module.routeProps} key={module.name} />
         ))}
       </div>
-      {siteConfig.show.footer && (
-        <Footer
-          name={siteConfig.author.name}
-          location={siteConfig.author.location}
-        />
-      )}
+      {siteConfig.show.footer && <Footer {...siteConfig.author} />}
     </div>
   );
 };

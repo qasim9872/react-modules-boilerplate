@@ -4,14 +4,18 @@ import Module from '../../modules/_shared/module.interface';
 import NavLink from './nav-link';
 
 const Navbar: React.FC<{
-  Logo?: IconType;
+  title: string;
   modules: Module[];
-}> = ({ Logo, modules }) => {
+  Logo?: IconType;
+}> = ({ title, Logo, modules }) => {
   const [currentTab, setCurrentTab] = useState(modules[0].name);
 
   return (
-    <header className="flex w-full bg-gray-600 justify-center items-center px-8 pt-2 shadow-md">
-      {Logo && <Logo className="App-logo" />}
+    <header className="flex w-full bg-gray-600 justify-between items-center px-8 pt-2 shadow-md">
+      <div>
+        {Logo && <Logo className="App-logo" />}
+        <h1 className="text-lg uppercase">{title}</h1>
+      </div>
       <ul className="flex justify-evenly">
         {modules.map((module) => (
           <NavLink
