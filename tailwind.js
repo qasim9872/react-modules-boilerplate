@@ -734,6 +734,12 @@ module.exports = {
       40: '40',
       50: '50',
     },
+    extend: {
+      colors: {
+        primary: colors.white,
+        secondary: colors.teal,
+      },
+    },
   },
   variantOrder: [
     'first',

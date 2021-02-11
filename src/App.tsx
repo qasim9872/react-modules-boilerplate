@@ -1,19 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import { Navbar } from './components';
+import modules from './modules';
 import StoreProviders from './store';
 
 function App() {
   return (
-    <div className="flex mx-auto min-w-0 h-screen">
-      <StoreProviders>
-        <Router>
-          <Switch>
-            <Route path="/">
-              <div className="text-black"> Hello World </div>
-            </Route>
-          </Switch>
-        </Router>
-      </StoreProviders>
+    <div className="flex flex-col mx-auto min-w-0 h-screen">
+      <Navbar modules={modules} />
+      <div className="App-content">
+        {modules.map((module) => (
+          <Route {...module.routeProps} key={module.name} />
+        ))}
+      </div>
     </div>
   );
 }
