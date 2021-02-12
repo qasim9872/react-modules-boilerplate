@@ -13,7 +13,7 @@ const AppPresentation: React.FC<{ siteConfig: typeof site }> = ({
       {siteConfig.show.navbar && (
         <Navbar title={siteConfig.title} modules={modules} />
       )}
-      <div className="h-full">
+      <div className="h-full text-black">
         {modules.map((module) => (
           <Route {...module.routeProps} key={module.name} />
         ))}

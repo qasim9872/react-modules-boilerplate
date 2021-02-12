@@ -5,6 +5,7 @@ const site = {
   author: {
     name: 'Muhammad Qasim',
     location: 'London',
+    link: 'https://github.com/qasim9872',
   },
   show: {
     navbar: true,
