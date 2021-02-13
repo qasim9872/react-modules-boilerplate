@@ -5,16 +5,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './assets/styles/main.css';
 
 import App from './App';
-import StoreProviders from './store';
 import reportWebVitals from './utils/reportWebVitals';
-import logger from './utils/logger';
+import logger from './modules/core/services/logger';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <StoreProviders>
-        <App />
-      </StoreProviders>
+      <App />
     </Router>
   </React.StrictMode>,
   document.getElementById('root'),

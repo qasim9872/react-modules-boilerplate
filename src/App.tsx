@@ -1,31 +1,9 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { Footer, Navbar } from './components';
-import site from './constants/site.constants';
-import useSiteConfig from './hooks/use-site-config';
-import modules from './modules';
+import modules, { core } from './modules';
+import WrapComponentInProvidersHoc from './utils/hoc/wrap-component-in-providers';
 
-const AppPresentation: React.FC<{ siteConfig: typeof site }> = ({
-  siteConfig,
-}) => {
-  return (
-    <div className="flex flex-col mx-auto min-w-0 h-screen">
-      {siteConfig.show.navbar && (
-        <Navbar title={siteConfig.title} modules={modules} />
-      )}
-      <div className="h-full text-black">
-        {modules.map((module) => (
-          <Route {...module.routeProps} key={module.name} />
-        ))}
-      </div>
-      {siteConfig.show.footer && <Footer {...siteConfig.author} />}
-    </div>
-  );
-};
+export default WrapComponentInProvidersHoc(() => {
+  const View = core.view;
 
-const withSiteConfigHOC = (Presentation: typeof AppPresentation) => () => {
-  const siteConfig = useSiteConfig();
-  return <Presentation siteConfig={siteConfig} />;
-};
-
-export default withSiteConfigHOC(AppPresentation);
+  return <View modules={modules} />;
+}, core.providers);
