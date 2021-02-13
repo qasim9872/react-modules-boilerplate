@@ -1,11 +1,16 @@
 import { ComponentProps } from 'react';
 import { Route } from 'react-router-dom';
-import { BaseModule } from './core.interface';
 
 interface RouteProps extends ComponentProps<typeof Route> {
   path: string;
 }
 
-export default interface Module extends BaseModule {
+export default interface Module {
+  enable: boolean;
+  showInNav: boolean;
+
+  name: string;
+  providers?: React.FC<{}>[];
+
   routeProps: RouteProps;
 }

@@ -4,11 +4,14 @@ import Module from '../_shared/module.interface';
 const AboutView = () => <div>About Module</div>;
 
 const About: Module = {
+  name: 'About',
+  enable: false,
+  showInNav: true,
+
   routeProps: {
     path: '/about',
     component: AboutView,
   },
-  name: 'About',
 };
 
 export default About;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IconType } from 'react-icons';
+import { useLocation } from 'react-router-dom';
 import Module from '../../modules/_shared/module.interface';
 import NavLink from './nav-link';
 
@@ -8,10 +9,19 @@ const Navbar: React.FC<{
   modules: Module[];
   Logo?: IconType;
 }> = ({ title, Logo, modules }) => {
-  const [currentTab, setCurrentTab] = useState(modules[0].name);
+  const [currentTab, setCurrentTab] = useState(modules[0]?.name || '');
+
+  const location = useLocation();
+  React.useEffect(() => {
+    const module = modules.find(
+      ({ routeProps }) => routeProps.path === location.pathname,
+    );
+
+    setCurrentTab(module?.name || '');
+  }, [modules, location]);
 
   return (
-    <header className="flex w-full bg-gray-600 justify-between items-center px-8 pt-2 shadow-md">
+    <header className="flex w-full bg-gray-600 justify-between items-center px-8 py-3 shadow-md">
       <div>
         {Logo && <Logo className="App-logo" />}
         <h1 className="text-lg uppercase">{title}</h1>

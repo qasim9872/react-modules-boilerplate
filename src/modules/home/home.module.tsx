@@ -6,12 +6,14 @@ const HomeView = () => {
 };
 
 const Home: Module = {
+  name: 'Home',
+  enable: true,
+  showInNav: false,
   routeProps: {
     path: '/',
     exact: true,
     component: HomeView,
   },
-  name: 'Home',
 };
 
 export default Home;

@@ -1,5 +1,5 @@
-import Home from './home';
-import About from './about';
+import Home from './home/home.module';
+import About from './about/about.module';
 
 import Module from './_shared/module.interface';
 
