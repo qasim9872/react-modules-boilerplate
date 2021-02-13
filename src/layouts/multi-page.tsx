@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Module from '../../_shared/module.interface';
+import Module from '../modules/_shared/module.interface';
 import { Footer, Navbar } from '../components';
 import { useGlobalConstantsHook } from '../store/global.constants';
 
-const AppView: React.FC<{ modules: Module[] }> = ({ modules }) => {
+const MultiPageLayout: React.FC<{ modules: Module[] }> = ({ modules }) => {
   const [constants] = useGlobalConstantsHook();
   const { title, show, author } = constants;
 
@@ -21,4 +21,4 @@ const AppView: React.FC<{ modules: Module[] }> = ({ modules }) => {
   );
 };
 
-export default AppView;
+export default MultiPageLayout;

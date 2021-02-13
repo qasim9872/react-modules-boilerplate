@@ -1,5 +1,5 @@
 import pino from 'pino';
-import { LOG_LEVEL, NAME, IS_PROD } from '../../../config/app.config';
+import { LOG_LEVEL, NAME, IS_PROD } from '../config/app.config';
 
 const options = {
   name: NAME,

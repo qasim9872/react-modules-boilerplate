@@ -1,4 +1,4 @@
-import ProviderWithContextHoc from '../../../utils/hoc/provider-with-context';
+import ProviderWithContextHoc from '../utils/hoc/provider-with-context';
 
 import logger from '../services/logger';
 

@@ -6,7 +6,7 @@ import './assets/styles/main.css';
 
 import App from './App';
 import reportWebVitals from './utils/reportWebVitals';
-import logger from './modules/core/services/logger';
+import logger from './services/logger';
 
 ReactDOM.render(
   <React.StrictMode>

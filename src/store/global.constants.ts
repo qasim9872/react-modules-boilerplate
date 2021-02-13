@@ -1,5 +1,5 @@
-import { NAME } from '../../../config/app.config';
-import ProviderWithContextHoc from '../../../utils/hoc/provider-with-context';
+import { NAME } from '../config/app.config';
+import ProviderWithContextHoc from '../utils/hoc/provider-with-context';
 
 export const globalConstants = {
   title: NAME,

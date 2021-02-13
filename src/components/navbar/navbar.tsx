@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IconType } from 'react-icons';
-import Module from '../../../_shared/module.interface';
+import Module from '../../modules/_shared/module.interface';
 import NavLink from './nav-link';
 
 const Navbar: React.FC<{
