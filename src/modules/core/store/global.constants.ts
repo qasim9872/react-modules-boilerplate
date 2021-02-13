@@ -14,7 +14,6 @@ export const globalConstants = {
   },
 };
 
-export type GlobalConstants = typeof globalConstants;
 export const {
   Provider: GlobalConstantsProvider,
   useHook: useGlobalConstantsHook,

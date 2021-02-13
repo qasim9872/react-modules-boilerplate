@@ -1,7 +1,9 @@
 import React from 'react';
 import Module from '../_shared/module.interface';
 
-const HomeView = () => <div>Home Module</div>;
+const HomeView = () => {
+  return <div>Home Module</div>;
+};
 
 const Home: Module = {
   routeProps: {
